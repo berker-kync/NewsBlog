@@ -59,3 +59,7 @@ def contact(request):
         **content
     }
     return render(request, 'pages/contact.html', context)
+
+
+def ana(request):
+    return render(request, 'pages/ana.html')
