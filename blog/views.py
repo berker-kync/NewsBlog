@@ -63,3 +63,7 @@ def contact(request):
 
 def ana(request):
     return render(request, 'pages/ana.html')
+
+
+def MusicNews1(request):
+    return render(request, 'pages/MusicNews1.html')
