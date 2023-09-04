@@ -80,9 +80,8 @@ def blog_detail(request, slug):
     return render(request, 'pages/blog_detail.html', {'news_item': news_item})
 
 
-def music_category(request, slug):
-    news = News.objects.get(slug=slug)
-    context = {
+def news_detail(request, slug):
+    news = get_object_or_404(News, slug=slug)
+    return render(request, 'pages/news_detail.html', {
         'news': news,
-    }
-    return render(request, 'musiccategory.html', context)
+    })
