@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Yazi
+from .models import *
+
 
 page_defaults = {
     'title': 'basşlıksız ',
@@ -13,12 +14,14 @@ def homepage(request):
         'yazilar': yazilar
     })
 
-def blog_detail(request, slug):
-    yazi = get_object_or_404(Yazi, slug=slug)
+# def blog_detail(request, slug):
+#     yazi = get_object_or_404(Yazi, slug=slug)
 
-    return render(request,'pages/blog_detail.html', {
-        'yazi':yazi
-    })
+#     return render(request,'pages/blog_detail.html', {
+#         'yazi':yazi
+#     })
+
+
 
 
     # name = 'Berker'
@@ -67,3 +70,19 @@ def ana(request):
 
 def MusicNews1(request):
     return render(request, 'pages/MusicNews1.html')
+
+def newslist(request):
+    news = News.objects.all() 
+    return render(request, 'pages/newslist.html', {'news': news})
+
+def blog_detail(request, slug):
+    news_item = get_object_or_404(News, slug=slug)
+    return render(request, 'pages/blog_detail.html', {'news_item': news_item})
+
+
+def music_category(request, slug):
+    news = News.objects.get(slug=slug)
+    context = {
+        'news': news,
+    }
+    return render(request, 'musiccategory.html', context)

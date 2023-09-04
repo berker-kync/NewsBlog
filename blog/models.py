@@ -13,4 +13,28 @@ class Yazi(models.Model):
         verbose_name_plural = 'Yazilar'
     def __str__(self):
         return self.baslik
+    
+
+
+class News(models.Model):
+    title = models.CharField(max_length=200)
+    slug = AutoSlugField(populate_from='title', unique=True, editable=True, blank=True)
+    textbody1 = models.TextField(null=True, blank=True)
+    photo1 = models.URLField(null=True, blank=True)
+    subtitle = models.CharField(max_length=200)
+    textbody2 = models.TextField(null=True, blank=True)
+    photo2 = models.URLField(null=True, blank=True)
+    textbody3 = models.TextField(null=True, blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+    updated_on= models.DateTimeField(auto_now=True)
+    published = models.BooleanField(default=False)
+
+    class Meta:
+        db_table = 'news'
+        verbose_name = 'News'
+        verbose_name_plural = 'News'
+    def __str__(self):
+        return self.title
+
+     
 
