@@ -64,10 +64,6 @@ def contact(request):
     return render(request, 'pages/contact.html', context)
 
 
-def ana(request):
-    return render(request, 'pages/ana.html')
-
-
 def MusicNews1(request):
     return render(request, 'pages/MusicNews1.html')
 

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -525,7 +526,7 @@
   <script src="src/vendors/@splidejs/splide-extension-video/dist/js/splide-extension-video.min.js"></script>
   
   <!-- Start development js -->
-  <script src="/static/css/themes.css"></script>
+  <script src="{% static theme.js %}"></script>
   <!-- End development js -->
 
   <!-- Production js -->
