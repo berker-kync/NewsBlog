@@ -16,6 +16,18 @@ class Yazi(models.Model):
     
 
 
+class Category(models.Model):
+    category = models.CharField(max_length=75, unique=True)
+
+    class Meta:
+        db_table = 'category'
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+    def __str__(self):
+        return self.category
+    
+
+
 class News(models.Model):
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from='title', unique=True, editable=True, blank=True)
@@ -25,6 +37,7 @@ class News(models.Model):
     textbody2 = models.TextField(null=True, blank=True)
     photo2 = models.URLField(null=True, blank=True)
     textbody3 = models.TextField(null=True, blank=True)
+    category = models.ForeignKey(Category, on_delete= models.SET_NULL, null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on= models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=False)
