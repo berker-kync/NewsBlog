@@ -9,15 +9,16 @@ page_defaults = {
 
 
 def homepage(request):
-    news = News.objects.filter(category=music_category)
+    categories = Category.objects.all()
+    news = News.objects.all()
+
+    return render(request, "pages/index.html", {
+        "categories": categories, 
+        "news": news
+})
 
 
-    return render(request,'pages/index.html', {
-        'news': news,
-        'music_category':music_category,
 
-
-    })
 
 
 
