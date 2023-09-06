@@ -86,13 +86,13 @@
                   <div class="splide__track">
                     <ul class="splide__list">
                      {% for newsitem in news %}
-                      {% if newsitem.category.category == 'Music' %}
+                      {% if newsitem.category.category == 'Technology' %}
                         {% if forloop.counter <= 8 %}
                             <li class="splide__slide">
                                 <div class="w-full pb-3">
                                 <div class="hover-img bg-white">
                                     <a href="{% url 'news_detail' slug=newsitem.slug %}">
-                                    <img class="max-w-full w-full mx-auto" src="{{ newsitem.photo1 }}" alt="">
+                                    <img class="max-w-full w-full mx-auto" src="{{newsitem.photo1}}" alt="">
                                     </a>
                                     <div class="py-3 px-6">
                                     <h3 class="text-lg font-bold leading-tight mb-2">
@@ -127,7 +127,7 @@
             <div class="flex flex-row flex-wrap -mx-3">
                 {% for newsitem in news %}
                 {% if newsitem.category.category == 'Gaming' %}
-                  {% if forloop.counter <= 8 %}
+                  {% if forloop.counter <= 16 %}
                     <div class="flex-shrink max-w-full w-full sm:w-1/3 lg:w-1/4 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
                       <div class="flex flex-row sm:block hover-img">
                         <a href="{% url 'news_detail'  slug=newsitem.slug %}">
@@ -164,41 +164,55 @@
               </h2>
             </div>
             <div class="flex flex-row flex-wrap -mx-3">
-              <div class="flex-shrink max-w-full w-full px-3 pb-5">
-                <div class="relative hover-img max-h-98 overflow-hidden">
-                  <!--thumbnail-->
-                  <a href="AnimeNews1.html">
-                    <img class="max-w-full w-full mx-auto h-auto" src="https://www.animefantastica.com/wp-content/uploads/Spy-x-Family-1.jpg" alt="Image description">
-                  </a>
-                  <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
-                    <!--title-->
-                    <a href="AnimeNews1.html">
-                      <h2 class="text-3xl font-bold capitalize text-white mb-3">Spy x Family Family 2. Sezon Ne zaman Gelecek?</h2>
-                    </a>                                              
-                    <!-- author and date -->
-                    <div class="pt-2">
-                      <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>Anime</div>
+                {% for newsitem in news %}
+                  {% if newsitem.category.category == 'Anime' %}
+                  {% if forloop.counter <= 20 %}
+                    <div class="flex-shrink max-w-full w-full px-3 pb-5">
+                      <div class="relative hover-img max-h-98 overflow-hidden">
+                        <!--thumbnail-->
+                        <a href="{% url 'news_detail'  slug=newsitem.slug %}">
+                          <img class="max-w-full w-full mx-auto h-auto" src="{{newsitem.photo1}}" alt="">
+                        </a>
+                        <div class="absolute px-5 pt-8 pb-5 bottom-0 w-full bg-gradient-cover">
+                          <!--title-->
+                          <a href="{% url 'news_detail'  slug=newsitem.slug %}">
+                            <h2 class="text-3xl font-bold capitalize text-white mb-3">{{newsitem.title}}</h2>
+                          </a>                                              
+                          <!-- author and date -->
+                          <div class="pt-2">
+                            <div class="text-gray-100"><div class="inline-block h-3 border-l-2 border-red-600 mr-2"></div>{{newsitem.category}}</div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  {% endif %}
+                  {% endif %}
+                {% endfor %}
               </div>
-
-              <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
-                <div class="flex flex-row sm:block hover-img">
-                  <a href="AnimeNews2.html">
-                    <img class="max-w-full w-full mx-auto" src="https://i.ytimg.com/vi_webp/VW_LxM4tt-o/maxresdefault.webp" alt="alt title">
-                  </a>
-                  <div class="py-0 sm:py-3 pl-3 sm:pl-0">
-                    <h3 class="text-lg font-bold leading-tight mb-2">
-                      <a href="AnimeNews2.html">The Rising of the Shield Hero Animesinin 3. Sezonunun Teaser'ı İlk Gösteriminin Ekim Ayında Yapılacağını Duyurdu</a>
-                    </h3>
-                    <p class="hidden md:block text-gray-600 leading-tight mb-1">Serinin resmi İngilizce Twitter hesabı videonun ingilizce altyazılı versiyonunu yayınladı ayrıca Crunchyroll'un seriyi Ekim ayında yayınlayacağı doğrulandı.</p>
-                    <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>{{newsitem.category}}</a>
-                  </div>
-                </div>
+              
+              <div class="flex flex-row flex-wrap -mx-3">
+                {% for newsitem in news %}
+                  {% if newsitem.category.category == 'Anime' %}
+                  {% if forloop.counter <= 26 %}
+                    <div class="flex-shrink max-w-full w-full sm:w-1/3 px-3 pb-3 pt-3 sm:pt-0 border-b-2 sm:border-b-0 border-dotted border-gray-100">
+                      <div class="flex flex-row sm:block hover-img">
+                        <a href="{% url 'news_detail'  slug=newsitem.slug %}">
+                          <img class="max-w-full w-full mx-auto" src="{{newsitem.photo1}}" alt="">
+                        </a>
+                        <div class="py-0 sm:py-3 pl-3 sm:pl-0">
+                          <h3 class="text-lg font-bold leading-tight mb-2">
+                            <a href="{% url 'news_detail'  slug=newsitem.slug %}">{{newsitem.title}}</a>
+                          </h3>
+                          <p class="hidden md:block text-gray-600 leading-tight mb-1">{{newsitem.subtitle}}</p>
+                          <a class="text-gray-500" href="#"><span class="inline-block h-3 border-l-2 border-red-600 mr-2"></span>{{newsitem.category}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                  {% endif %}                 
+                {% endfor %}
               </div>
-            </div>
-          </div>
+              
           <!-- right -->
           <div class="flex-shrink max-w-full w-full lg:w-1/3 lg:pl-8 lg:pt-14 lg:pb-8 order-first lg:order-last">
             <div class="w-full bg-white">

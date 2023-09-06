@@ -56,6 +56,14 @@ def news_detail(request, slug):
 
 
 
+def music(request):
+    categories = Category.objects.get(category='Music')
+    news = News.objects.filter(category=categories)
+
+    return render(request, 'pages/music.html', {
+        'news': news,
+        'categories': categories
+    })
 
 
 
