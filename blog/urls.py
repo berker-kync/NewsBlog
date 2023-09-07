@@ -9,4 +9,7 @@ urlpatterns = [
    path('contact/', views.contact, name = 'Contact'),
    path('news/<slug>/', views.news_detail, name='news_detail'),
    path('music/', views.music, name='Music'),
+   path('anime/', views.anime, name='Anime'),
+   path('gaming/', views.gaming, name='Gaming'),
+   path('technology/', views.technology, name='Technology')
 ]
