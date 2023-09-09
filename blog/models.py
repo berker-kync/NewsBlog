@@ -48,6 +48,31 @@ class News(models.Model):
         verbose_name_plural = 'News'
     def __str__(self):
         return self.title
+    
+
+
+class Comment(models.Model):
+    news = models.ForeignKey(News, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
+    body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
+    published = models.BooleanField(default=False)
+    
+    
+    class Meta:
+        db_table = 'comments'
+        verbose_name = 'Comment'
+        verbose_name_plural = 'Comments'
+
+    def __str__(self):
+        return self.name
+
+    
+    
+
+
 
      
 

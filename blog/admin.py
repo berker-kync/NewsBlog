@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Yazi, News, Category
+from .models import Yazi, News, Category, Comment
 
 
 class NewsAdmin(admin.ModelAdmin):
@@ -14,3 +14,4 @@ class NewsAdmin(admin.ModelAdmin):
 admin.site.register(Yazi)
 admin.site.register(News, NewsAdmin)
 admin.site.register(Category)
+admin.site.register(Comment)
